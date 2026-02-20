@@ -23,10 +23,3 @@ This project focuses on clean layout structure, responsive design, subtle UI ani
 - CSS3 (custom properties, flexbox, clamp, media queries)
 
 No frameworks. No libraries. Just pure CSS.
-
----
-
-## Project Structure
-├── index.html
-├── style.css
-└── images/
