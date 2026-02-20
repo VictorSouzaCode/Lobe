@@ -115,7 +115,7 @@ nav {
 .lobe-logo_link {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.8rem;
   font-weight: bold;
   font-size: 1.6rem;
   text-decoration: none;
