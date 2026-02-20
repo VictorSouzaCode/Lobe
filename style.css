@@ -7,7 +7,6 @@
 /* VARIABLES */
 :root {
     /* COLORS */
-    --HEADER-NORMAL-BG-COLOR: #fff;
     --HEADER-BG-HSLA-TRANSPARENCY: hsla(0, 0%, 100%, 0.918);
     --TOP-LOBE-WORD-COLOR: #000;
     --NAV-LINKS-COLOR: #606060;
@@ -32,7 +31,7 @@
     --TOUR-LINK-SHADOWN: rgba(0, 0, 0, 0);
 }
 
-@media (prefers-color-scheme: light) {
+@media (prefers-color-scheme: dark) {
     :root {
         --HEADER-BG-HSLA-TRANSPARENCY: hsla(0, 0%, 0%, 0.84);
         --TOP-LOBE-WORD-COLOR: #fff;
@@ -61,7 +60,6 @@
 
 header {
     height: 8vh;
-    background-color: var(--HEADER-NORMAL-BG-COLOR);
     position: sticky;
     top: 0;
     z-index: 100;
@@ -103,9 +101,7 @@ nav {
 
 /* general nav links style */
 ul {
-    /* background-color: #ffffff; */
     /* to make the blur effect work here i needed to turn the background-color off */
-    /* then i just need to add the backdrop-filter and the neew background-color on header but it is down bellow*/
     width: 200px;
     list-style: none;
     display: flex;
@@ -252,7 +248,7 @@ video {
 video:hover {
     transform: scale(1.02);
     box-shadow: 0 80px 50px 30px var(--VIDEO-SHADOWN-HOVER-COLOR);
-    transition: transform 600ms, box-shadow 400ms; /* writing this way allows my to animate both the scale and shadow */
+    transition: transform 600ms, box-shadow 400ms; /* allows me to animate both the scale and shadow */
 }
 
 
@@ -317,7 +313,7 @@ video:hover {
 .middle_page_download_btn:hover::after {
     opacity: 1;
     transition: opacity 400ms ease;
-} /* this animation section is a little confuse because i dint know that you could write the code in a different way that is more clean */
+}
 
 
 main hr {
@@ -523,7 +519,7 @@ abbr {
     height: 40px;
     width: 115px;
     transition: transform 300ms;
-    will-change: transform; /* this code here is very important for the animation, because it prevents any bug and weird effect */ /* this code is so fucking awesome that the animation got better than the original site */
+    will-change: transform;
     text-shadow: 0 1px 1px var(--BTN-TEXT-SHADOWN);
 }
 
@@ -760,7 +756,7 @@ abbr {
         height: 50px;
         width: 130px;
         transition: transform 300ms;
-        will-change: transform; /* this code here is very important for the animation, because it prevents any bug and weird effect */ /* this code is so fucking awesome that the animation got better than the original site */
+        will-change: transform;
         text-shadow: 0 1px 1px var(--BTN-TEXT-SHADOWN);
     }
 }
