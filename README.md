@@ -1,6 +1,6 @@
 # Lobe Landing Page
 
-This project focuses on clean layout structure, responsive design, subtle UI animations using vanilla HTML and CSS and OS dark mode support.
+This project focuses on clean layout structure, responsive design, subtle UI animations, dark mode support and design tokens.
 
 Live: https://lobe-two-zeta.vercel.app/
 
