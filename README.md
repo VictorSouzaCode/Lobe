@@ -1,8 +1,6 @@
-# Lobe Landing Page (Recreation)
+# Lobe Landing Page
 
 Live project : https://lobe-two-zeta.vercel.app/
-
-A responsive landing page recreation inspired by the Lobe homepage.
 
 This project focuses on clean layout structure, responsive design, subtle UI animations using vanilla HTML and CSS and OS dark mode support.
 
