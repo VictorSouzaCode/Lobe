@@ -1,0 +1,883 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* VARIABLES */
+:root {
+    /* COLORS */
+    --HEADER-NORMAL-BG-COLOR: #fff;
+    --HEADER-BG-HSLA-TRANSPARENCY: hsla(0, 0%, 100%, 0.918);
+    --TOP-LOBE-WORD-COLOR: #000;
+    --NAV-LINKS-COLOR: #606060;
+    --NAV-LINKS-HOVER-COLOR: #212121;
+    --BODY-BG-COLOR: #fff;
+    --TOUR-LINK-COLOR: #000;
+    --TOUR-LINK-HOVER-COLOR: #000;
+    --DOWNLOAD-BTN-BG-COLOR: #5d00ff;
+    --DOWNLOAD-BTN-COLOR: #fff;
+    --VIDEO-BG-COLOR: grey;
+    --TEXT-COLOR: #000;
+    --TOUR-WORD-COLOR: #5d00ff;
+    --VIDEO-SHADOWN-COLOR: #00000000;
+    --VIDEO-SHADOWN-HOVER-COLOR: #00000027;
+    --MIDDLE-PAGE-DOWN-BTN-BG-COLOR: #5d00ff;
+    --MIDDLE-PAGE-DOWN-BTN-COLOR: #fff;
+    --MIDDLE-PAGE-DOWN-BTN-AFTER-SHADOWN-COLOR: #00000014;
+    --DOWNLOAD-BTN-MIDDLE-PAGE-COLOR: #fff;
+    --HR-BG-COLOR: #d7d7d7;
+    --FOOTER-LINKS-NORMAL-COLOR: black;
+    --BTN-TEXT-SHADOWN: rgba(0, 0, 0, 0);
+    --TOUR-LINK-SHADOWN: rgba(0, 0, 0, 0);
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --HEADER-BG-HSLA-TRANSPARENCY: hsla(0, 0%, 0%, 0.84);
+        --TOP-LOBE-WORD-COLOR: #fff;
+        --NAV-LINKS-COLOR: rgb(199, 199, 199);
+        --NAV-LINKS-HOVER-COLOR: #fff;
+        --TOUR-LINK-COLOR: #ffffff;
+        --TOUR-LINK-HOVER-COLOR: #ffffff;
+        --BODY-BG-COLOR: hsl(0, 0%, 0%);
+        --VIDEO-BG-COLOR: hsl(0, 0%, 0%);
+        --DOWNLOAD-BTN-BG-COLOR: #00eeff;
+        --DOWNLOAD-BTN-COLOR: #fff;
+        --TEXT-COLOR: #fff;
+        --TOUR-WORD-COLOR: #00eeff;
+        --MIDDLE-PAGE-DOWN-BTN-BG-COLOR: #00eeff;
+        --MIDDLE-PAGE-DOWN-BTN-COLOR: #fff;
+        --FOOTER-LINKS-NORMAL-COLOR: #cccccc;
+        --HR-BG-COLOR: #707070;
+        --VIDEO-SHADOWN-HOVER-COLOR: #88888833;
+        --MIDDLE-PAGE-DOWN-BTN-AFTER-SHADOWN-COLOR: #52525283;
+        --BTN-TEXT-SHADOWN: rgba(0, 0, 0, 0.135);
+        --TOUR-LINK-SHADOWN: rgb(255, 255, 255);
+    }
+}
+
+/* HEADER */
+
+header {
+    height: 8vh;
+    background-color: var(--HEADER-NORMAL-BG-COLOR);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 100px;
+    margin-left: 100px;
+    font-weight: bold;
+    height: 100%;
+}
+
+/* lobe logo */
+.lobe-logo_container {
+    width: 180px;
+    display: flex;
+    align-items: center;
+}
+.lobe-logo_link {
+    color: var(--TOP-LOBE-WORD-COLOR);
+    font-size: 1.8rem;
+    width: 60%;
+    display: flex;
+    column-gap: 0.2rem;
+    align-items: center;
+}
+.two-square_image {
+    background-image: url(../Lobe/lobe-images/square-on-top-of-each-other.png);
+    background-size: cover;
+    width: 35px;
+    height: 35px;
+    top: 0;
+    left: 50px;
+    z-index:1;
+    
+}
+
+/* general nav links style */
+ul {
+    /* background-color: #ffffff; */
+    /* to make the blur effect work here i needed to turn the background-color off */
+    /* then i just need to add the backdrop-filter and the neew background-color on header but it is down bellow*/
+    width: 200px;
+    list-style: none;
+    display: flex;
+    column-gap: 3rem;
+    width: 50%;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+ul li a {
+    opacity: 80%;
+    text-decoration: none;
+    color: var(--NAV-LINKS-COLOR);
+}
+
+/* animations */
+ul li a:hover:not(.tour-link) {
+    opacity: 90%;
+    color: var(--NAV-LINKS-HOVER-COLOR);
+    transition-duration: 0.1s;
+}
+
+ul li {
+    transition: transform 320ms;
+}
+ul li:hover {
+    transform: scale(1.05);
+    transition: transform 350ms;
+}
+/* ///// */
+
+
+nav a {
+    text-decoration: none;
+}
+
+.tour-link {
+    color: var(--TOUR-LINK-COLOR);
+    text-decoration: none;
+    text-shadow: 0 1px 1px var(--TOUR-LINK-SHADOWN);
+}
+.tour-link:hover {
+    color: var(--TOUR-LINK-HOVER-COLOR);
+    opacity: 80%;
+}
+
+/* download button */
+.download-btn_container {
+    width: 200px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 1rem;
+}
+
+.download-btn {
+    border-radius: 30px;
+    background-color: var(--DOWNLOAD-BTN-BG-COLOR);
+    color: var(--DOWNLOAD-BTN-COLOR);
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 130px;
+    transition: transform 300ms;
+    will-change: transform; /* this code here is very important for the animation, because it prevents any bug and weird effect */ /* this code is so fucking awesome that the animation got better than the original site */
+    text-shadow: 0 1px 1px var(--BTN-TEXT-SHADOWN);
+}
+
+.download-btn:hover {
+    transform: scale(1.05);
+    transition: transform 220ms;
+}
+
+
+
+/* FILTER HEADER SECTION */
+
+header {
+    background: var(--HEADER-BG-HSLA-TRANSPARENCY);
+    backdrop-filter: blur(5px);
+}
+
+
+
+
+
+/* BODY */
+
+body {
+    font-family:Arial, Helvetica, sans-serif;
+    min-width: 500px;
+    max-width: 2000px;
+    color: var(--TEXT-COLOR);
+    background-color: var(--BODY-BG-COLOR);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.main-content {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.main-content h1 {
+    font-size: 3.5rem;
+    margin-top: 2rem;
+}
+.Tour-word-color {
+    color: var(--TOUR-WORD-COLOR);
+}
+
+.p-text-above-video {
+    font-size: 1.5rem;
+    text-align: center;
+    line-height: 2.2rem;
+    margin-top: 0.8rem;
+}
+
+video {
+    max-width: 882px;
+    max-height: 530px;
+    min-width: 200px;
+    width: 100%;
+    border-radius: 25px;
+    background-color: var(--VIDEO-BG-COLOR);
+    transition: opacity 0.1s ease;
+    z-index: 1;
+    margin-top: 4rem;
+    transition: transform 600ms, box-shadow 450ms;
+    box-shadow: 0 2px 10px 2px var(--VIDEO-SHADOWN-COLOR);
+}
+
+video:hover {
+    transform: scale(1.02);
+    box-shadow: 0 80px 50px 30px var(--VIDEO-SHADOWN-HOVER-COLOR);
+    transition: transform 600ms, box-shadow 400ms; /* writing this way allows my to animate both the scale and shadow */
+}
+
+
+
+.headline-below-video {
+    font-size: 3.5rem;
+    text-align: center;
+    margin-top: 5rem;
+}
+
+.middle_page_download_container {
+    width: 300px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.middle_page_download_btn {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.3rem;
+    background-color: var(--MIDDLE-PAGE-DOWN-BTN-BG-COLOR);
+    color: var(--DOWNLOAD-BTN-MIDDLE-PAGE-COLOR);
+    height: 55px;
+    width: 175px;
+    border-radius: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    transition: opacity 0.1s ease;
+    position: relative;
+    z-index: 1;
+    color: var(--MIDDLE-PAGE-DOWN-BTN-COLOR);
+    text-shadow: 0 1px 1px var(--BTN-TEXT-SHADOWN);
+}
+
+.middle_page_download_btn {
+    transition: transform 300ms;
+    will-change: transform;
+}
+
+/* button animation */
+.middle_page_download_btn:hover {
+    transform: scale(1.05);
+    transition: transform 400ms;
+}
+
+.middle_page_download_btn::after {
+    content: '';
+    position: absolute;
+    border-radius: 60px;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    box-shadow: 0 30px 20px -10px var(--MIDDLE-PAGE-DOWN-BTN-AFTER-SHADOWN-COLOR);
+    transition: opacity 280ms ease;
+    opacity: 0;
+}
+.middle_page_download_btn:hover::after {
+    opacity: 1;
+    transition: opacity 400ms ease;
+} /* this animation section is a little confuse because i dint know that you could write the code in a different way that is more clean */
+
+
+main hr {
+    margin-top: 3rem;
+    min-width: 100px;
+    max-width: 1400px;
+    border: none;
+    height: 0.12333rem;
+    background-color: var(--HR-BG-COLOR);
+}
+
+
+
+
+
+
+
+
+
+/* FOOTER */
+footer {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    min-width: 100%;
+}
+
+.offscreen-headline {
+    position: absolute;
+    left: -200000px;
+}
+
+
+.footer_columns_container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 3rem;
+    width: 70%;
+    height: auto;
+    min-width: 50px;
+    max-width: 1120px;
+    margin-top: 1.5rem;
+    margin-bottom: 9rem;
+    margin-right: 15px;
+    margin-left: 15px;
+}
+.footer_columns_container a {
+    color: var(--FOOTER-LINKS-NORMAL-COLOR);
+    text-decoration: none;
+    transition: transform 380ms;
+}
+
+/* footer links animations */
+.footer_columns_container a:hover {
+    transform: scale(1.1);
+    transition: transform 400ms;
+}
+
+.first-column {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.5rem;
+}
+.first-column:not(.footer-lobe-logo) {
+    font-size: 0.9rem;
+}
+
+.footer_lobe-logo_container {
+    display: flex;
+    align-items: center;
+    column-gap: 0.25rem;
+}
+.footer-lobe-logo {
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.mini_two-square_image {
+    background-image: url(../Lobe/lobe-images/square-on-top-of-each-other.png);
+    background-size: cover;
+    width: 25px;
+    height: 25px;
+}
+
+.columns-title {
+    font-weight: bold;
+    font-size: 1rem;
+    margin-bottom: 0.4rem;
+}
+
+
+.second-column {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.5rem;
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+}
+.second-column:not(.columns-title ) {
+    font-size: 0.9rem;
+}
+
+
+.third-column {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.5rem;
+    padding-left: 1.5rem;
+    font-size: 0.9rem;
+}
+.third-column:not(.columns-title ) {
+    font-size: 0.9rem;
+}
+
+
+.fourth-column {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.5rem;
+    padding-left: 1.5rem;
+}
+.fourth-column:not(.columns-title ) {
+    font-size: 0.9rem;
+}
+
+
+
+
+.fifth-column {
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 0.8rem;
+    padding-left: 1.5rem;
+}
+
+.fifth-column img {
+    transition: transform 200ms;
+}
+
+.fifth-column img:hover {
+    transform: scale(1.122);
+    transition: transform 200ms;
+}
+
+abbr {
+    text-decoration: none;
+}
+
+
+
+
+/* @MEDIA QUERIE */
+
+/*@media 375px  */
+@media screen and (min-width: 375px) {
+    /* lobe logo */
+.lobe-logo_container {
+    width: 170px;
+    display: flex;
+    align-items: center;
+    /* border: 1px solid black; */
+}
+.lobe-logo_link {
+    color: var(--TOP-LOBE-WORD-COLOR);
+    font-size: 1.5rem;
+    width: 60%;
+    display: flex;
+    column-gap: 0.2rem;
+    align-items: center;
+}
+.two-square_image {
+    background-image: url(../Lobe/lobe-images/square-on-top-of-each-other.png);
+    background-size: cover;
+    width: 23px;
+    height: 23px;
+    top: 0;
+    left: 50px;
+    z-index:100;
+    
+}
+
+
+.download-btn_container {
+    width: 200px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 1rem;
+    /* border: 1px solid black; */
+}
+
+.download-btn {
+    border-radius: 30px;
+    background-color: var(--DOWNLOAD-BTN-BG-COLOR);
+    color: var(--DOWNLOAD-BTN-COLOR);
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 115px;
+    transition: transform 300ms;
+    will-change: transform; /* this code here is very important for the animation, because it prevents any bug and weird effect */ /* this code is so fucking awesome that the animation got better than the original site */
+    text-shadow: 0 1px 1px var(--BTN-TEXT-SHADOWN);
+}
+
+
+
+    nav {
+    margin-right: 20px;
+    margin-left: 20px;
+    }
+
+    ul {
+        column-gap: 1.2rem;
+        flex-wrap: wrap;
+        font-size: 0.8rem;
+    }
+
+    .main-content h1 {
+        font-size: 3rem;
+        margin-top: 2rem;
+    }
+
+    .p-text-above-video {
+        font-size: 1.2rem;
+        line-height: 2.2rem;
+    }
+
+    video {
+        max-width: 882px;
+        max-height: 495px;
+        min-width: 50px;
+        width: 100%;
+        margin-top: 3.5rem;
+    }
+
+    .headline-below-video {
+        font-size: 2.5rem;
+        margin-top: 5rem;
+    }
+
+    .middle_page_download_container {
+        width: 300px;
+        height: 150px;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    
+    .middle_page_download_btn {
+        font-size: 1.3rem;
+        height: 55px;
+        width: 175px;
+    }
+
+    hr {
+        margin-top: 3rem;
+        width: 85%;
+        max-width: 1400px;
+        border: none;
+        height: 0.12333rem;
+        background-color: #d7d7d7;
+    }
+
+    .footer_columns_container {
+        margin-top: 1.5rem;
+        margin-bottom: 9rem;
+        justify-content: flex-start;
+    }
+
+    .columns-title {
+        font-size: 1rem;
+        margin-bottom: 0.4rem;
+    }
+
+    .first-column {
+        margin-left: 1.5rem;
+    }
+
+
+    .footer_lobe-logo_container {
+        margin-bottom: 0;
+    }
+
+    .first-column:not(.footer-lobe-logo) {
+        font-size: 0.9rem;
+    }
+
+    .footer-lobe-logo {
+        font-size: 1.4rem;
+    }
+
+    .mini_two-square_image {
+        width: 25px;
+        height: 25px;
+    }
+
+
+    .second-column:not(.columns-title ) {
+        font-size: 0.9rem;
+    }
+
+    .third-column:not(.columns-title ) {
+        font-size: 0.9rem;
+    }
+
+    .fourth-column:not(.columns-title ) {
+        font-size: 0.9rem;
+    }
+
+    .fifth-column {
+    
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 0.8rem;
+        padding-left: 1.5rem;
+    }
+
+    .speech-balloon {
+        margin-top: 0;
+    }
+
+    
+}
+
+/* @media 406px */
+@media screen and (min-width: 406px) {
+    .footer_columns_container {
+        justify-content: flex-start;
+    }
+}
+
+/* @media 532px */
+@media screen and (min-width: 532px) {
+    .footer_columns_container {
+        justify-content: flex-start;
+    }
+}
+
+/* @media 775px */
+@media screen and (min-width: 775px) {
+    .footer_columns_container {
+        justify-content: space-between;
+    }
+
+    ul {
+        column-gap: 3rem;
+        flex-wrap: nowrap;
+        font-size: 1.1rem;
+    }
+
+    .main-content h1 {
+        font-size: 3.5rem;
+        margin-top: 2rem;
+    }
+    .Tour-word-color {
+        color: var(--TOUR-WORD-COLOR);
+    }
+    
+    .p-text-above-video {
+        font-size: 1.5rem;
+        text-align: center;
+        line-height: 2.2rem;
+        margin-top: 0.8rem;
+    }
+    
+    video {
+        max-width: 882px;
+        max-height: 530px;
+        min-width: 200px;
+        width: 100%;
+        border-radius: 25px;
+        background-color: var(--VIDEO-BG-COLOR);
+        transition: opacity 0.1s ease;
+        z-index: 1;
+        margin-top: 4rem;
+        transition: transform 600ms, box-shadow 450ms;
+        box-shadow: 0 2px 10px 2px var(--VIDEO-SHADOWN-COLOR);
+    }
+}
+
+/* @media 809px */
+@media screen and (min-width: 809px) {
+    .first-column {
+        margin-left: 0;
+    }
+}
+
+/* @media 900px */
+@media screen and (min-width: 900px) {
+    /* lobe logo */
+.lobe-logo_container {
+    width: 180px;
+    display: flex;
+    align-items: center;
+}
+.lobe-logo_link {
+    color: var(--TOP-LOBE-WORD-COLOR);
+    font-size: 1.8rem;
+    width: 60%;
+    display: flex;
+    column-gap: 0.2rem;
+    align-items: center;
+}
+.two-square_image {
+    background-image: url(../Lobe/lobe-images/square-on-top-of-each-other.png);
+    background-size: cover;
+    width: 35px;
+    height: 35px;
+    top: 0;
+    left: 50px;
+    z-index:1;
+    
+}
+
+
+
+
+
+    .download-btn_container {
+        width: 200px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding-right: 1rem;
+    }
+    
+    .download-btn {
+        border-radius: 30px;
+        background-color: var(--DOWNLOAD-BTN-BG-COLOR);
+        color: var(--DOWNLOAD-BTN-COLOR);
+        font-size: 1.1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 50px;
+        width: 130px;
+        transition: transform 300ms;
+        will-change: transform; /* this code here is very important for the animation, because it prevents any bug and weird effect */ /* this code is so fucking awesome that the animation got better than the original site */
+        text-shadow: 0 1px 1px var(--BTN-TEXT-SHADOWN);
+    }
+}
+
+
+/*@media 1000px  */
+@media screen and (min-width: 1000px) {
+    nav {
+        margin-right: 88px;
+        margin-left: 100px;
+    }
+
+    ul {
+        column-gap: 3rem;
+        flex-wrap: nowrap;
+    }
+
+    .main-content h1 {
+        font-size: 4.8rem;
+        margin-top: 3.5rem;
+    }
+
+    .p-text-above-video {
+        font-size: 1.9rem;
+        line-height: 3rem;
+    }
+
+    video {
+        max-width: 1140px;
+        max-height: 640px;
+        min-width: 200px;
+        width: 100%;
+        margin-top: 5rem;
+    }
+
+    .headline-below-video {
+        font-size: 5rem;
+        margin-top: 8rem;
+    }
+
+    .middle_page_download_container {
+        width: auto;
+        height: auto;
+        margin-top: 2.5rem;
+        margin-bottom: 5rem;
+    }
+    
+    .middle_page_download_btn {
+        font-size: 1.5rem;
+        height: 65px;
+        width: 200px;
+    }
+
+    hr {
+        margin-top: 4rem;
+        width: 85%;
+        max-width: 1320px;
+        border: none;
+        height: 0.12333rem;
+        background-color: #d7d7d7;
+    }
+
+    .footer_columns_container {
+        margin-bottom: 11.5rem;
+        margin-top: 5rem;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .columns-title {
+        font-size: 1.4rem;
+        margin-bottom: 0.4rem;
+    }
+
+
+    .footer_lobe-logo_container {
+        margin-bottom: 0.4rem;
+    }
+
+    .first-column:not(.footer-lobe-logo) {
+        font-size: 1.2rem;
+    }
+
+    .footer-lobe-logo {
+        font-size: 1.4rem;
+    }
+
+    .mini_two-square_image {
+        width: 30px;
+        height: 30px;
+    }
+
+
+    .second-column:not(.columns-title ) {
+        font-size: 1.2rem;
+    }
+
+    .third-column:not(.columns-title ) {
+        font-size: 1.2rem;
+    }
+
+    .fourth-column:not(.columns-title ) {
+        font-size: 1.2rem;
+    }
+
+    .fifth-column {
+        flex-direction: row;
+        align-items: flex-start;
+        column-gap: 0.8rem;
+        padding-left: 1.5rem;
+    }
+
+    .speech-balloon {
+        margin-top: 0.3444rem;
+    }
+
+    .youtube-logo {
+        margin-top: 0.4rem;
+    }
+}
